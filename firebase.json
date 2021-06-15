@@ -1,0 +1,22 @@
+{
+  "functions": {
+    "source": "functions",
+    "predeploy": [
+      "npm run build && xcopy nuxt functions/nuxt/ && copy nuxt.config.js functions/"
+    ]
+  },
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  },
+  "rewrites": [
+    {
+      "source": "**",
+      "function": "ssrapp"
+    }
+  ]
+}
