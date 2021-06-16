@@ -57,7 +57,7 @@ export default {
     services: {  
       auth: {
         initialize: {
-          onAuthStateChangedAction: 'onAuthStateChanged',
+         onAuthStateChangedAction: 'onAuthStateChanged',
         },
         ssr: true,
         emulatorPort: isDev && useEmulators ? 9099 : undefined,
@@ -77,6 +77,13 @@ export default {
       },
       performance: false,
       analytics: false,
+    },
+  },
+
+  pwa: {
+    workbox: {
+      importScripts: ['/firebase-auth-sw.js'],
+      dev: process.env.NODE_ENV === 'production',
     },
   },
 
