@@ -25,6 +25,7 @@ module.exports = {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
+    '@nuxtjs/firebase',
   ],
 
   buildDir: 'nuxt',
@@ -33,7 +34,47 @@ module.exports = {
   modules: [
     // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
+    '@nuxtjs/pwa',
+    '@nuxtjs/style-resources',
+    '@nuxtjs/dotenv'
   ],
+
+  firebase: {
+    // ...
+    config: {
+      apiKey: process.env.FIRE_APIKEY,
+      authDomain: "pingo-rianair-2f72e.firebaseapp.com",
+      projectId: "pingo-rianair-2f72e",
+      storageBucket: "pingo-rianair-2f72e.appspot.com",
+      messagingSenderId: process.env.FIRE_MESID,
+      appId: process.env.FIRE_APPID,
+      measurementId: process.env.FIRE_MESURID
+    },
+    services: {  
+      auth: {
+        initialize: {
+          onAuthStateChangedAction: 'onAuthStateChanged',
+        },
+        ssr: true,
+        emulatorPort: isDev && useEmulators ? 9099 : undefined,
+        disableEmulatorWarnings: false,
+      },
+      firestore: {
+        memoryOnly: false,
+        enablePersistence: true,
+        emulatorPort: isDev && useEmulators ? 8080 : undefined,
+      },
+      functions: {
+        emulatorPort: isDev && useEmulators ? 12345 : undefined,
+      },
+      storage: true,
+      database: {
+        emulatorPort: isDev && useEmulators ? 9000 : undefined,
+      },
+      performance: false,
+      analytics: false,
+    },
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
