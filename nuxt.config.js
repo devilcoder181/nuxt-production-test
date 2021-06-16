@@ -1,4 +1,8 @@
-module.exports = {
+const isDev = process.env.NODE_ENV === 'production'
+const useEmulators = false // manually change if emulators needed
+
+
+export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'nuxt-production',

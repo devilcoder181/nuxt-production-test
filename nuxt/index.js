@@ -13,7 +13,12 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 /* Plugins */
 
 import nuxt_plugin_plugin_0954bba5 from 'nuxt_plugin_plugin_0954bba5' // Source: .\\components\\plugin.js (mode: 'all')
+import nuxt_plugin_workbox_565afb38 from 'nuxt_plugin_workbox_565afb38' // Source: .\\workbox.js (mode: 'client')
+import nuxt_plugin_metaplugin_1ad6d2e4 from 'nuxt_plugin_metaplugin_1ad6d2e4' // Source: .\\pwa\\meta.plugin.js (mode: 'all')
 import nuxt_plugin_buefy_e1d882ce from 'nuxt_plugin_buefy_e1d882ce' // Source: .\\buefy.js (mode: 'all')
+import nuxt_plugin_serviceauthssrserver_b118460c from 'nuxt_plugin_serviceauthssrserver_b118460c' // Source: .\\firebase\\service.auth.ssr-server.js (mode: 'server')
+import nuxt_plugin_index_3fa2a71a from 'nuxt_plugin_index_3fa2a71a' // Source: .\\firebase\\index.js (mode: 'all')
+import nuxt_plugin_serviceauthinitialize_10e3e0f0 from 'nuxt_plugin_serviceauthinitialize_10e3e0f0' // Source: .\\firebase\\service.auth.initialize.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -181,8 +186,28 @@ async function createApp(ssrContext, config = {}) {
     await nuxt_plugin_plugin_0954bba5(app.context, inject)
   }
 
+  if (process.client && typeof nuxt_plugin_workbox_565afb38 === 'function') {
+    await nuxt_plugin_workbox_565afb38(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_metaplugin_1ad6d2e4 === 'function') {
+    await nuxt_plugin_metaplugin_1ad6d2e4(app.context, inject)
+  }
+
   if (typeof nuxt_plugin_buefy_e1d882ce === 'function') {
     await nuxt_plugin_buefy_e1d882ce(app.context, inject)
+  }
+
+  if (process.server && typeof nuxt_plugin_serviceauthssrserver_b118460c === 'function') {
+    await nuxt_plugin_serviceauthssrserver_b118460c(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_index_3fa2a71a === 'function') {
+    await nuxt_plugin_index_3fa2a71a(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_serviceauthinitialize_10e3e0f0 === 'function') {
+    await nuxt_plugin_serviceauthinitialize_10e3e0f0(app.context, inject)
   }
 
   // Lock enablePreview in context
