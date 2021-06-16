@@ -2,15 +2,15 @@
   {
     "name": "inspire",
     "path": "/inspire",
-    "component": "X:\\\\Production\\\\nuxt-production\\\\pages\\\\inspire.vue",
+    "component": "E:\\\\Alan\\\\Research\\\\nuxt-production-test\\\\pages\\\\inspire.vue",
     "chunkName": "pages/inspire",
-    "_name": "_3a78d240"
+    "_name": "_5c2b61f0"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "X:\\\\Production\\\\nuxt-production\\\\pages\\\\index.vue",
+    "component": "E:\\\\Alan\\\\Research\\\\nuxt-production-test\\\\pages\\\\index.vue",
     "chunkName": "pages/index",
-    "_name": "_07c95750"
+    "_name": "_6261f680"
   }
 ]
